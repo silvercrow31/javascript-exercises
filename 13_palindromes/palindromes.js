@@ -1,27 +1,23 @@
 const palindromes = function (givenWord) {
-    let wordProcessed;
-    itemsToRemove = ["-", "_", ",", " ", "\"", "\´", "."];
-    wordLength=givenWord.length;
-    let reversedWordProcessed = "";
+    // format the string to lowercase and 
+    const wordLowerCase = givenWord.toLowerCase();
+    const wordLength=givenWord.length;
+    
+    // remove punctuations or breaks
+    let itemsToRemove = ["-", "_", ",", " ", ".", "!"];
+    let wordLowerPruned = "";
 
-    for (let i = 0; i===wordLength; i++) {
-        let currentChar=givenWord.at(i)
-
-        // remove punctuation and word breaks
-        
-        if (itemsToRemove.include(currentChar)) {
-            wordProcessed = givenWord.replace(/currentChar/g,"")      
+    for (let i = 0; i < wordLength; i++) {
+        let currentChar = wordLowerCase.at(i);
+        if (!(itemsToRemove.includes(currentChar))) {
+            wordLowerPruned = wordLowerPruned.concat(currentChar);
         }
-        wordProcessed = wordProcessed.toLowercase()
-        // get the reversed string
-        reversedWordProcessed = reversedWordProcessed.concat(currentChar)
     }
-    if (reversedWordProcessed === wordProcessed) {
-        return true
-    }   else {
-        return false
-    }
+    // reverses the processed string
+    const reversedWord = wordLowerPruned.split("").reverse().join("");
 
+    // tests if it's a palindrome
+    return wordLowerPruned === reversedWord;
 };
 
 // Do not edit below this line

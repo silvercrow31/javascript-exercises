@@ -6,20 +6,15 @@ const findTheOldest = function(a) {
 
     return oldestPerson;
 
-    // función anidada que recibe personas (object), calcuula su edad,
+    // función anidada que recibe personas (object), calcula su edad,
     // compara con un valor y actualiza en base a la comparación
+    
     function checkIfOldest(p) {
 
             let currentPerson = p;
-            let currentPersonAge;
-            
-            if (!("yearOfDeath" in p)) {
-                let date = new Date()
-                currentPersonAge = date.getFullYear() - p.yearOfBirth;
 
-            } else if ("yearOfDeath" in p) {
-                currentPersonAge = p.yearOfDeath - p.yearOfBirth;
-            }
+            let greaterYear = p.yearOfDeath ?? new Date().getFullYear();
+            let currentPersonAge = greaterYear - p.yearOfBirth;
 
             if (currentPersonAge > oldestAge) {
                 oldestPerson = currentPerson;

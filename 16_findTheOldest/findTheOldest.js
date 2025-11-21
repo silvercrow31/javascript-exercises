@@ -11,7 +11,13 @@ const findTheOldest = function(a) {
     function checkIfOldest(p) {
 
             let currentPerson = p;
-            let currentPersonAge = p.yearOfDeath - p.yearOfBirth;
+            let currentPersonAge;
+            if (p.yearOfDeath !== undefined) {
+                currentPersonAge = p.yearOfDeath - p.yearOfBirth;
+            } else if (p.yearOfDeath === undefined) {
+                let date = new Date()
+                currentPersonAge = date.getFullYear() - p.yearOfBirth;
+            }
 
             if (currentPersonAge > oldestAge) {
                 oldestPerson = currentPerson;
